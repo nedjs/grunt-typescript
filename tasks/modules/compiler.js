@@ -182,7 +182,7 @@ function writeTsConfig(options, targetFiles, logger) {
             sourceMap: tsOpts.sourceMap,
             declaration: tsOpts.declaration,
             out: tsOpts.out,
-            outDir: tsOpts.outDir,
+            outDir: tsOpts.outDir ? util.normalizePath(util.relativePath(outputDir, tsOpts.outDir)) : undefined,
             noLib: tsOpts.noLib,
             noImplicitAny: tsOpts.noImplicitAny,
             noResolve: tsOpts.noResolve,
