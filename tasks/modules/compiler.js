@@ -181,7 +181,7 @@ function writeTsConfig(options, targetFiles, logger) {
             removeComments: tsOpts.removeComments,
             sourceMap: tsOpts.sourceMap,
             declaration: tsOpts.declaration,
-            out: tsOpts.out,
+            out: tsOpts.out ? util.normalizePath(util.relativePath(outputDir, tsOpts.out)) : undefined,
             outDir: tsOpts.outDir ? util.normalizePath(util.relativePath(outputDir, tsOpts.outDir)) : undefined,
             noLib: tsOpts.noLib,
             noImplicitAny: tsOpts.noImplicitAny,
@@ -189,7 +189,7 @@ function writeTsConfig(options, targetFiles, logger) {
             target: tsOpts.target === 0 /* ES3 */ ? "es3" :
                 tsOpts.target === 1 /* ES5 */ ? "es5" :
                     tsOpts.target === 2 /* ES6 */ ? "es6" : undefined,
-            rootDir: tsOpts.rootDir,
+            rootDir: tsOpts.rootDir ? util.normalizePath(util.relativePath(outputDir, tsOpts.rootDir)) : undefined,
             module: tsOpts.module === 2 /* AMD */ ? "amd" :
                 tsOpts.module === 1 /* CommonJS */ ? "commonjs" :
                     tsOpts.module === 4 /* System */ ? "system" :

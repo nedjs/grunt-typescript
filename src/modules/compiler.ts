@@ -238,7 +238,7 @@ function writeTsConfig(options: gts.CompilerOptions, targetFiles: string[], logg
 			removeComments: tsOpts.removeComments,
             sourceMap: tsOpts.sourceMap,
             declaration: tsOpts.declaration,
-            out: tsOpts.out,
+            out: tsOpts.out ? util.normalizePath(util.relativePath(outputDir, tsOpts.out)) : undefined,
             outDir: tsOpts.outDir ? util.normalizePath(util.relativePath(outputDir, tsOpts.outDir)) : undefined,
             noLib: tsOpts.noLib,
             noImplicitAny: tsOpts.noImplicitAny,
@@ -246,7 +246,7 @@ function writeTsConfig(options: gts.CompilerOptions, targetFiles: string[], logg
             target: tsOpts.target === ts.ScriptTarget.ES3 ? "es3" :
 					tsOpts.target === ts.ScriptTarget.ES5 ? "es5" :
 					tsOpts.target === ts.ScriptTarget.ES6 ? "es6" : undefined,
-            rootDir: tsOpts.rootDir,
+            rootDir: tsOpts.rootDir ? util.normalizePath(util.relativePath(outputDir, tsOpts.rootDir)) : undefined,
             module: tsOpts.module === ts.ModuleKind.AMD ? "amd" :
 					tsOpts.module === ts.ModuleKind.CommonJS ? "commonjs" : 
                     tsOpts.module === ts.ModuleKind.System ? "system" :
